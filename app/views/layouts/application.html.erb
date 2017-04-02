@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<style>
+  .border_style{
+    
+    width:60px;
+    margin: 0 auto;
+    padding:10px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  }
+</style>
+<html>
+<head>
+  <title>Workspace</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+<br><br>
+<div>
+  <div class='border_style'>
+    <%= link_to'HOME', main_path %>
+  </div>
+<div class='border_style'>
+  <%= link_to 'NEW',posts_new_path %>
+ </div>
+</div>
+</div>
+
+
+
+</body>
+
+</html>
