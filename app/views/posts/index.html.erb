@@ -9,16 +9,80 @@
     <div class="panel panel-primary">
      <div class="panel-heading">
        <h5 style='float: right'><%= post.created_at.strftime('%Y %B %-d') %></h5>
-       
+       <h5> 이글의 카테고리는 <%= post.category.name %></h5>       
        <h3 class="panel-title"> <%= post.id %>번째 글입니다              |    <%= post.name %>님의 제보</h3>
      </div>
      <div class="panel-body">
-       <%= post.content %>
+       <%= post.content %><br>
+       
+       <%= link_to '수정하기', edit_post_path(post.id) %> |
+    <%= link_to '삭제하기', post_path(post.id), method: :delete, data: { confirm: '이 글을 삭제하시겠습니까?'} %>
      </div>
    </div>
    </div>
  
 
 <% end %>
+<br><br><br>
+<h1>카테고리 : 사랑</h1>
+
+<% @posts_love.each do |post| %>
+    <div class="panel panel-primary">
+     <div class="panel-heading">
+       <h5 style='float: right'><%= post.created_at.strftime('%Y %B %-d') %></h5>
+       <h3 class="panel-title"> <%= post.id %>번째 글입니다              |    <%= post.name %>님의 제보</h3>
+     </div>
+     <div class="panel-body">
+       <%= post.content %><br>
+       
+       <%= link_to '수정하기', edit_post_path(post.id) %> |
+    <%= link_to '삭제하기', post_path(post.id), method: :delete, data: { confirm: '이 글을 삭제하시겠습니까?'} %>
+     </div>
+   </div>
+   </div>
+ 
+<% end %>
+
+<br>
+<h1>카테고리 : 사는얘기</h1>
+<br>
+
+<% @posts_life.each do |post| %>
+    <div class="panel panel-primary">
+     <div class="panel-heading">
+       <h5 style='float: right'><%= post.created_at.strftime('%Y %B %-d') %></h5>
+       <h3 class="panel-title"> <%= post.id %>번째 글입니다              |    <%= post.name %>님의 제보</h3>
+     </div>
+     <div class="panel-body">
+       <%= post.content %><br>
+       
+       <%= link_to '수정하기', edit_post_path(post.id) %> |
+    <%= link_to '삭제하기', post_path(post.id), method: :delete, data: { confirm: '이 글을 삭제하시겠습니까?'} %>
+     </div>
+   </div>
+   </div>
+ 
+<% end %>
+
+<br>
+<h1>카테고리 : 저..진지합니다</h1>
+
+<% @posts_serious.each do |post| %>
+    <div class="panel panel-primary">
+     <div class="panel-heading">
+       <h5 style='float: right'><%= post.created_at.strftime('%Y %B %-d') %></h5>
+       <h3 class="panel-title"> <%= post.id %>번째 글입니다              |    <%= post.name %>님의 제보</h3>
+     </div>
+     <div class="panel-body">
+       <%= post.content %><br>
+       
+       <%= link_to '수정하기', edit_post_path(post.id) %> |
+    <%= link_to '삭제하기', post_path(post.id), method: :delete, data: { confirm: '이 글을 삭제하시겠습니까?'} %>
+     </div>
+   </div>
+   </div>
+ 
+<% end %>
+
 
  </section>
