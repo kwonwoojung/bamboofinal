@@ -1,22 +1,75 @@
+  <br><br><br>
+  <center>
+   <div class="search">
+  <%= form_tag posts_searchindex_path, :method => 'get' do %>
+      <%= text_field_tag :search, params[:search], placeholder:"검색내용을 입력하세요" %>
+      <%= submit_tag "검색하기", :name => nil %>
+  <% end %>
+  </div>
+  </center><br><br><br><br>
+  
+  
+<div class='larger_outer'>
+ <div class='titleouter'>
+     <div class='bamboo_title'>
+     
+     <%= image_tag('index/멋사로고.png',class:'logo_size')  %>
+     LIKE LION BAMBOO IN SKKU
+     </div>
+ </div>
+
+ <div class='body'>
+     
+ <%= form_for @post do |f| %>
+     <%= f.select :category_id, options_from_collection_for_select(@categories, "id", "name") %><br>
+    <%= f.label :name %><br>
+  <%= f.text_field :name %><br>
+    <%= f.label :content %><br>
+    <%= f.text_area :content %><br>
+    <%= f.submit %><br><br>
+ <% end %>
+ 
+ 
+ </div>
+
+</div>
 
 
 <!-- 주석처리입니다 -->
 
 <section class='body'>
+ 
+
+
+ 
 
 <% @posts.each do |post| %>
     
     <div class="panel panel-primary">
      <div class="panel-heading">
        <h5 style='float: right'><%= post.created_at.strftime('%Y %B %-d') %></h5>
-       <h5> 이글의 카테고리는 <%= post.category.name %></h5>       
+       <h5> 이글의 카테고리는 <%= post.category.name %></h5><hr>       
        <h3 class="panel-title"> <%= post.id %>번째 글입니다              |    <%= post.name %>님의 제보</h3>
      </div>
+     <hr>
      <div class="panel-body">
        <%= post.content %><br>
        
        <%= link_to '수정하기', edit_post_path(post.id) %> |
     <%= link_to '삭제하기', post_path(post.id), method: :delete, data: { confirm: '이 글을 삭제하시겠습니까?'} %>
+    
+    
+     <br>
+     <% post.comments.each do |c| %>
+      <%= c.content %><br><hr>
+      <% end %>
+     <%= form_for @comment, url: post_comments_path(post_id: post.id) do |c| %>
+
+
+        <%= c.text_area :content %><br>
+
+         <%= c.submit "작성하기" %><br><br>
+       <% end %>
      </div>
    </div>
    </div>
